@@ -9,15 +9,17 @@ import PageNotFound from './components/pageNotFound/PageNotFound';
 function App() {
   return (
     <BrowserRouter>
-      <Header />
       <div className="App">
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path='moviedetail' element={<MovieDetail />} />
-          <Route path='pagenotfound' element={<PageNotFound />} />
-        </Routes>
+        <Header />
+        <div className="container">
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path='moviedetail' element={<MovieDetail />} />
+            <Route path='pagenotfound' element={<PageNotFound />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </BrowserRouter>
   );
 }

@@ -1,4 +1,22 @@
-$primary-color: #0f171e;
-$secondary-color: #1a242f;
-$font-primary: #ffffff;
-$font-secondary: #79b8f3;
+@import './common/colors.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "open sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: $primary-color;
+}
+
+.container {
+  margin: 0px 40px;
+}
+
+  
