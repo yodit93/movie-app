@@ -1,20 +1,23 @@
 import { useSelector } from 'react-redux';
-import { getAllMovies } from '../../features/movies/movieSlice';
 import MovieCard from '../movieCard/MovieCard';
 import './MovieListing.scss';
 
 const MovieListing = () => {
-  const movies = useSelector(getAllMovies);
-  let renderMovies = '';
-  renderMovies = movies.Response === 'True' ? (
-    movies.Search.map((movie) => <MovieCard key={movie.Title} movie={movie} />)
-  ) : (<div><h3>Could not fetch data</h3></div>);
+  const { movies, shows, isLoading } = useSelector((state) => state);
   return (
     <div className="movie-wrapper">
       <div className="movie-list">
         <h2>Movies</h2>
+        {isLoading && <h3 className="loading">Loading...</h3>}
         <div className="movie-container">
-          {renderMovies}
+          {movies && movies.map((movie) => <MovieCard key={movie.Title} movie={movie} />)}
+        </div>
+      </div>
+      <div className="show-list">
+        <h2>Shows</h2>
+        {isLoading && <h3 className="loading">Loading...</h3>}
+        <div className="show-container">
+          {shows && shows.map((show) => <MovieCard key={show.Title} movie={show} />)}
         </div>
       </div>
     </div>

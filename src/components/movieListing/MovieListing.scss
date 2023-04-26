@@ -1,6 +1,7 @@
 @import '../../common/colors.scss';
 
-.movie-list {
+.movie-list,
+.show-list {
   margin: 20px 0;
 
   h2 {
@@ -9,9 +10,14 @@
     font-weight: 400;
   }
 
-  .movie-container {
+  .movie-container,
+  .show-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 15px;
+  }
+
+  .loading {
+    color: $font-primary;
   }
 }
