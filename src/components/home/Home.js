@@ -5,7 +5,7 @@ import movieApi from "../../common/apis/movieApi";
 import { APIKey } from '../../common/apis/MovieAPIKey';
 import { addMovies } from "../../features/movies/movieSlice";
 
-const movieText = 'Hurry';
+const movieText = 'Potter';
 const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -15,8 +15,8 @@ const Home = () => {
       .catch ((err) => {
         return err;
       })
-      console.log(response.data.Search);
-      dispatch(addMovies(response.data.Search));
+      console.log(response.data);
+      dispatch(addMovies(response.data));
     }
     fetchMovies();
   }, [])
