@@ -5,7 +5,7 @@ import movieApi from "../../common/apis/movieApi";
 import { APIKey } from '../../common/apis/MovieAPIKey';
 import { addMovies } from "../../features/movies/movieSlice";
 
-const movieText = 'Potter';
+const movieText = 'Harry';
 const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
