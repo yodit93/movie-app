@@ -7,14 +7,14 @@ const initialState = {
   isLoading: false,
 };
 const movieText = 'Harry';
-export const fetchAsyncMovies = createAsyncThunk('movies/fetchAsyncMovies', async (_, {rejectWithValue}) => {
+export const fetchAsyncMovies = createAsyncThunk('movies/fetchAsyncMovies', async (_, { rejectWithValue }) => {
   try {
     const response = await movieApi.get(`?apikey=${APIKey}&s=${movieText}&type="movie"`);
     return response.data;
   } catch (err) {
-    rejectWithValue(err);
+    return rejectWithValue(err);
   }
-})
+});
 
 const movieSlice = createSlice({
   name: 'movies',
