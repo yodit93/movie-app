@@ -1,1 +1,2 @@
-export const APIKey = 'd9cee89b';
+const APIKey = 'd9cee89b';
+export default APIKey;
