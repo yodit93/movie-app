@@ -4,13 +4,23 @@ import APIKey from '../../common/apis/MovieAPIKey';
 
 const initialState = {
   movies: [],
+  shows: [],
   isLoading: false,
 };
 const movieText = 'Harry';
+const seriesText = 'Friends';
 export const fetchAsyncMovies = createAsyncThunk('movies/fetchAsyncMovies', async (_, { rejectWithValue }) => {
   try {
     const response = await movieApi.get(`?apikey=${APIKey}&s=${movieText}&type="movie"`);
-    return response.data;
+    return response.data.Search;
+  } catch (err) {
+    return rejectWithValue(err);
+  }
+});
+export const fetchAsyncShows = createAsyncThunk('movies/fetchAsyncShows', async (_, { rejectWithValue }) => {
+  try {
+    const response = await movieApi.get(`?apikey=${APIKey}&s=${seriesText}&type="series"`);
+    return response.data.Search;
   } catch (err) {
     return rejectWithValue(err);
   }
@@ -35,9 +45,18 @@ const movieSlice = createSlice({
       movies: action.payload,
     }),
     [fetchAsyncMovies.rejected]: ((action) => action.payload),
+    [fetchAsyncShows.pending]: (state) => ({
+      ...state,
+      isLoading: true,
+    }),
+    [fetchAsyncShows.fulfilled]: (state, action) => ({
+      ...state,
+      isLoading: false,
+      shows: action.payload,
+    }),
+    [fetchAsyncShows.rejected]: ((action) => action.payload),
   },
 });
 
 export const { addMovies } = movieSlice.actions;
-export const getAllMovies = ((state) => state.movies);
 export default movieSlice.reducer;
