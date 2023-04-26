@@ -5,6 +5,7 @@ import APIKey from '../../common/apis/MovieAPIKey';
 const initialState = {
   movies: [],
   shows: [],
+  selectedMovieOrShow: {},
   isLoading: false,
 };
 const movieText = 'Harry';
@@ -25,7 +26,14 @@ export const fetchAsyncShows = createAsyncThunk('movies/fetchAsyncShows', async 
     return rejectWithValue(err);
   }
 });
-
+export const fetchAsyncMovieOrShow = createAsyncThunk('movies/fetchAsyncMovieOrShow', async (id, { rejectWithValue }) => {
+  try {
+    const response = await movieApi.get(`?apikey=${APIKey}&i=${id}&Plot="full"`);
+    return response.data;
+  } catch (err) {
+    return rejectWithValue(err);
+  }
+});
 const movieSlice = createSlice({
   name: 'movies',
   initialState,
@@ -55,6 +63,11 @@ const movieSlice = createSlice({
       shows: action.payload,
     }),
     [fetchAsyncShows.rejected]: ((action) => action.payload),
+    [fetchAsyncMovieOrShow.fulfilled]: (state, action) => ({
+      ...state,
+      isLoading: false,
+      selectedMovieOrShow: action.payload,
+    }),
   },
 });
 

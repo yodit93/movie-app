@@ -10,14 +10,14 @@ const MovieListing = () => {
         <h2>Movies</h2>
         {isLoading && <h3 className="loading">Loading...</h3>}
         <div className="movie-container">
-          {movies && movies.map((movie) => <MovieCard key={movie.Title} movie={movie} />)}
+          {movies && movies.map((movie) => <MovieCard key={movie.imdbID} movie={movie} />)}
         </div>
       </div>
       <div className="show-list">
         <h2>Shows</h2>
         {isLoading && <h3 className="loading">Loading...</h3>}
         <div className="show-container">
-          {shows && shows.map((show) => <MovieCard key={show.Title} movie={show} />)}
+          {shows && shows.map((show) => <MovieCard key={show.imdbID} movie={show} />)}
         </div>
       </div>
     </div>
