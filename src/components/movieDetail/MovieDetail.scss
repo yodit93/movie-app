@@ -8,6 +8,21 @@
   font-weight: 400;
 }
 
+@media screen and (max-width: 800px) {
+  .movie-section {
+    flex-wrap: wrap;
+    gap: 10px;
+
+    .section-left {
+      order: 2;
+
+      .movie-title {
+        font-size: 28px;
+      }
+    }
+  }
+}
+
 .movie-rating {
   padding-left: 3px;
   margin-top: 20px;
