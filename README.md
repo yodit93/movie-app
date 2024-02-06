@@ -59,7 +59,7 @@ The project was built using the youtube video lesson by [Dipesh Malvia](https://
 
 > Link to deployed project.
 
-- [Live Demo Link](<a href="https://movie-app-t8te.onrender.com">Live Demo</a>)
+- [Live Demo Link](<a href="https://listing-movie-app.netlify.app/">Live Demo</a>)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
